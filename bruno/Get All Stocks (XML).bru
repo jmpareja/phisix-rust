@@ -9,3 +9,14 @@ get {
   body: none
   auth: none
 }
+
+docs {
+  # Get All Stocks (XML)
+  
+  Fetches the live list of all securities and indices from the Philippine Stock Exchange (PSE) in JAXB-compatible XML format.
+  
+  **URL**: `GET /stocks.xml`
+  
+  **Response**:
+  Returns an XML document with a root element `<stocks:stocks>` containing `<stocks:stock>` items.
+}

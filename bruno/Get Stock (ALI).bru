@@ -9,3 +9,14 @@ get {
   body: none
   auth: none
 }
+
+docs {
+  # Get Single Stock
+  
+  Looks up a single stock ticker case-insensitively from the active live list.
+  
+  **URL**: `GET /stocks/{symbol}` (e.g., `GET /stocks/ali`, `GET /stocks/ali.json`, `GET /stocks/ali.xml`)
+  
+  **Path Parameters**:
+  - `symbol` (required): The stock ticker symbol (e.g. `ALI`, `TEL`, `BDO`).
+}

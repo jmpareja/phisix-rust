@@ -9,3 +9,15 @@ post {
   body: none
   auth: none
 }
+
+docs {
+  # Archive Stocks
+  
+  Triggers a routine to scrape the current PSE stock list and save it into the local SQLite history database.
+  
+  **URL**: `GET` or `POST` `/stocks/archive`
+  
+  **Behavior**:
+  - Useful for running as a daily cron job to build up historical stock data.
+  - Returns a status message indicating success or failure.
+}

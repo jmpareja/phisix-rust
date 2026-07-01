@@ -9,3 +9,19 @@ get {
   body: none
   auth: none
 }
+
+docs {
+  # Get Historical Stock Price
+  
+  Retrieves the closing price and trading volume for a specific stock on a specific trading date.
+  
+  **URL**: `GET /stocks/{symbol}.{date}` (e.g., `GET /stocks/ali.2023-09-03`, `GET /stocks/ali.2023-09-03.json`, `GET /stocks/ali.2023-09-03.xml`)
+  
+  **Path Parameters**:
+  - `symbol`: The stock ticker symbol.
+  - `date`: The trading date in `YYYY-MM-DD` format.
+  
+  **Fallback Mechanism**:
+  1. Searches the local SQLite database first.
+  2. If not found locally, proxies the query to the external PHISIX API (`https://phisix-api2.appspot.com`), returns it, and caches the result locally for future queries.
+}

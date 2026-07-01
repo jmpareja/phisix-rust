@@ -9,3 +9,16 @@ get {
   body: none
   auth: none
 }
+
+docs {
+  # Get All Stocks (JSON)
+  
+  Fetches the live list of all securities and indices from the Philippine Stock Exchange (PSE).
+  
+  **URL**: `GET /stocks.json` (or `GET /stocks`)
+  
+  **Response**:
+  Returns a JSON object with:
+  - `as_of`: ISO 8601 timestamp representing the update date.
+  - `stocks`: An array of stock objects containing name, symbol, price, percent change, and volume.
+}
