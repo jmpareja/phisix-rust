@@ -18,6 +18,11 @@ impl Db {
         Ok(db)
     }
 
+    /// Returns a reference to the underlying connection mutex.
+    pub fn conn(&self) -> &Arc<Mutex<Connection>> {
+        &self.conn
+    }
+
     pub fn init(&self) -> Result<()> {
         let conn = self.conn.lock().unwrap();
         

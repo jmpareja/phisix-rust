@@ -1,0 +1,45 @@
+meta {
+  name: Get Dividends Calendar
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{baseUrl}}/dividends
+  body: none
+  auth: none
+}
+
+params:query {
+  ~from: 2026-08-01
+  ~to: 2026-08-31
+}
+
+docs {
+  # Get Dividends Calendar
+
+  Returns all dividend calendar entries from the local database.
+
+  Without filters, returns the most recent 200 records ordered by ex-date descending.
+
+  ## Query Parameters (optional)
+
+  | Param | Description |
+  |-------|-------------|
+  | from  | Start ex-date filter (inclusive), YYYY-MM-DD |
+  | to    | End ex-date filter (inclusive), YYYY-MM-DD |
+
+  ## Response Shape
+
+  ```json
+  {
+    "as_of": "2026-08-05T00:00:00+08:00",
+    "total": 42,
+    "dividends": [ ... ]
+  }
+  ```
+
+  ## Example
+
+  `GET /dividends?from=2026-08-01&to=2026-08-31`
+}

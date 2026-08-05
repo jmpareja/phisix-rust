@@ -1,0 +1,45 @@
+meta {
+  name: Post Dividend
+  type: http
+  seq: 9
+}
+
+post {
+  url: {{baseUrl}}/dividends
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "Globe Telecom, Inc.",
+    "symbol": "COMMON",
+    "dividend_type": "Cash",
+    "dividend_rate": "Php25 per common share",
+    "ex_date": "2026-08-17",
+    "record_date": "2026-08-18",
+    "payment_date": "2026-09-03",
+    "circular_number": "C05886-2026"
+  }
+}
+
+docs {
+  # Post Dividend
+
+  Creates or updates a dividend calendar entry.
+
+  Accepts a single dividend object or an array of objects.
+
+  ## Fields
+
+  | Field           | Type   | Required | Description                                  |
+  |-----------------|--------|----------|----------------------------------------------|
+  | name            | string | yes      | Company name                                 |
+  | symbol          | string | yes      | Security type / symbol (e.g. COMMON, ACENB)  |
+  | dividend_type   | string | yes      | "Cash", "Stock", "Property", etc.            |
+  | dividend_rate   | string | yes      | Raw rate string (e.g. "Php25 per share")     |
+  | ex_date         | string | yes      | Ex-dividend date (YYYY-MM-DD)                |
+  | record_date     | string | yes      | Record date (YYYY-MM-DD)                     |
+  | payment_date    | string | no       | Payment date (YYYY-MM-DD), nullable          |
+  | circular_number | string | no       | PSE circular number (e.g. "C05886-2026")     |
+}

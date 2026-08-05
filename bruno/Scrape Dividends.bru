@@ -1,0 +1,32 @@
+meta {
+  name: Scrape Dividends from PSE EDGE
+  type: http
+  seq: 11
+}
+
+get {
+  url: {{baseUrl}}/dividends/scrape
+  body: none
+  auth: none
+}
+
+docs {
+  # Scrape Dividends from PSE EDGE
+
+  Scrapes all dividend records from the PSE EDGE dividends calendar at
+  `https://edge.pse.com.ph/disclosureData/dividends_and_rights_info_list.ax`
+  and stores them in the local SQLite database.
+
+  The scraper:
+  1. Fetches the first page to determine total page count
+  2. Iterates through all pages (with 300ms delay between requests)
+  3. Parses each HTML table row into a dividend record
+  4. Saves all records to the local `dividend` table (INSERT OR REPLACE)
+
+  Returns the full scraped dividend calendar as JSON.
+
+  Also supports `POST` (equivalent behavior).
+
+  **Note**: This may take several seconds depending on the number of pages
+  (currently ~11 pages, ~540 records).
+}

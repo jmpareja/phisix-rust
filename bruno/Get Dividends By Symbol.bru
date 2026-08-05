@@ -1,0 +1,26 @@
+meta {
+  name: Get Dividends By Symbol
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{baseUrl}}/dividends/COMMON
+  body: none
+  auth: none
+}
+
+docs {
+  # Get Dividends By Symbol
+
+  Returns all dividend records for a specific security symbol.
+
+  The symbol matches the "Type of Security" column from PSE EDGE
+  (e.g. COMMON, BRNPB Series B, ACENB, GLOBA, PRF4A, etc.).
+
+  Supports format suffixes:
+  - `/dividends/COMMON` or `/dividends/COMMON.json` → JSON
+  - `/dividends/COMMON.xml` → XML
+
+  Returns 404 if no records are found for that symbol.
+}

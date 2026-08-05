@@ -1,0 +1,28 @@
+meta {
+  name: Delete Dividend
+  type: http
+  seq: 10
+}
+
+delete {
+  url: {{baseUrl}}/dividends/COMMON/2026-08-17
+  body: none
+  auth: none
+}
+
+docs {
+  # Delete Dividend
+
+  Deletes a specific dividend record by symbol and ex-date.
+
+  Returns:
+  - **204 No Content** on success
+  - **404 Not Found** if no matching record exists
+
+  ## URL Parameters
+
+  | Param   | Description                                        |
+  |---------|----------------------------------------------------|
+  | symbol  | Security symbol (e.g. COMMON, ACENB)               |
+  | ex_date | Ex-dividend date (YYYY-MM-DD)                      |
+}
