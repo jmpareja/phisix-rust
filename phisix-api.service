@@ -1,0 +1,15 @@
+[Unit]
+Description=PHISIX Stock & Dividends API Service
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/joel/prog/rust/projects/phisix-rust
+ExecStart=/usr/bin/podman run --rm --name phisix-api -p 8080:8080 -v /home/joel/prog/rust/projects/phisix-rust/data:/app/data:Z phisix-rust:latest
+ExecStop=/usr/bin/podman stop -t 10 phisix-api
+Restart=always
+RestartSec=5s
+
+[Install]
+WantedBy=default.target
