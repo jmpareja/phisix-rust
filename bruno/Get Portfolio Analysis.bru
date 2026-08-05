@@ -1,0 +1,17 @@
+meta {
+  name: Get Portfolio Analysis
+  type: http
+  seq: 14
+}
+
+get {
+  url: {{baseUrl}}/portfolios/dragonfi-high-yield/analysis
+  body: none
+  auth: none
+}
+
+docs {
+  # Get Reference Portfolio Analysis
+
+  Enriches portfolio holdings with live market prices, percent changes, volume, and sector allocation breakdown.
+}

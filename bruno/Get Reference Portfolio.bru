@@ -1,0 +1,17 @@
+meta {
+  name: Get Reference Portfolio
+  type: http
+  seq: 13
+}
+
+get {
+  url: {{baseUrl}}/portfolios/dragonfi-high-yield
+  body: none
+  auth: none
+}
+
+docs {
+  # Get Reference Portfolio Details
+
+  Fetches target weights and holdings breakdown for a signature portfolio by ID or slug.
+}

@@ -1,0 +1,48 @@
+meta {
+  name: Create Reference Portfolio
+  type: http
+  seq: 15
+}
+
+post {
+  url: {{baseUrl}}/portfolios
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "PSEi Dividend Dividend Champions",
+    "slug": "dividend-champions",
+    "description": "High yield dividend growth strategy concentrating on top market caps.",
+    "category": "Dividend Yield",
+    "risk_level": "Low",
+    "holdings": [
+      {
+        "symbol": "AREIT",
+        "name": "AREIT, Inc.",
+        "target_weight_pct": 30.0,
+        "sector": "Real Estate / REIT",
+        "notes": "Anchor REIT"
+      },
+      {
+        "symbol": "MER",
+        "name": "Manila Electric Company",
+        "target_weight_pct": 35.0,
+        "sector": "Utilities"
+      },
+      {
+        "symbol": "TEL",
+        "name": "PLDT Inc.",
+        "target_weight_pct": 35.0,
+        "sector": "Telecommunications"
+      }
+    ]
+  }
+}
+
+docs {
+  # Create Reference Portfolio
+
+  Adds a new reference signature portfolio to the local database.
+}
