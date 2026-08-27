@@ -1,0 +1,11 @@
+# Podman/Docker build exclusions.
+#
+# This file is NOT optional and .gitignore does NOT substitute for it: podman
+# ignores .gitignore entirely, so `COPY . .` in the Containerfile was pulling
+# target/ (2.1 GB) and the live data/phisix.db into the build context. That is
+# what made the builder layer 3.82 GB against a 98.5 MB final image.
+target/
+data/
+.git/
+notebooks/
+bruno/

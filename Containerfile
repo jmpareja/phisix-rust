@@ -27,6 +27,12 @@ WORKDIR /app
 # Copy the compiled binary from the builder stage
 COPY --from=builder /usr/src/phisix-rust/target/release/phisix-rust /app/phisix-rust
 
+# Copy the static assets. main.rs serves these with ServeDir::new("static"),
+# which is relative to the working directory — so with WORKDIR /app they must
+# land at /app/static. Without this the fallback service 404s every static
+# path (favicons, robots.txt) even though the files exist in the repo.
+COPY --from=builder /usr/src/phisix-rust/static /app/static
+
 # Create database directory
 RUN mkdir -p /app/data
 
