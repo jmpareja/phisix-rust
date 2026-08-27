@@ -17,9 +17,18 @@ RUN cargo build --release
 # Stage 2: Create a minimal runtime image
 FROM debian:bookworm-slim
 
-# Install ca-certificates (required for HTTPS connections to PSE website)
+# ca-certificates: kept for belt and braces, though reqwest is built with
+# webpki-roots here so the TLS trust store is actually compiled into the binary.
+#
+# curl: required by the container HEALTHCHECK. A healthcheck runs INSIDE the
+# container, and debian-slim has neither curl nor wget -- so a
+# `HealthCmd=curl ...` in the quadlet fails with `curl: not found` on every
+# probe and the container sits in "starting" forever while podman logs a
+# failing streak. Found exactly that way on 2026-08-28. It also makes the image
+# debuggable from the inside, which is worth the ~6 MB.
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates \
+    curl \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
